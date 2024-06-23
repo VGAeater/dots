@@ -1,0 +1,15 @@
+#!/bin/sh
+
+if [[ $1 = "-h" ]] || [[ $1 = "--help" ]] || [ -z $1 ]
+then
+	echo "Your options are:"
+	ls --color=auto ~/.config/hypr/displayPresets
+	exit 0
+fi
+
+if ! test -f ~/.config/hypr/displayPresets/$1; then
+  echo "No such file or directory." ~/.config/hypr/displayPresets/$1
+  exit 2
+fi
+
+cp ~/.config/hypr/displayPresets/$1 ~/.config/hypr/display.conf
