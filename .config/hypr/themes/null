@@ -1,0 +1,21 @@
+$lockscreen = swaylock --clock --screenshots --effect-blur 20x5 --indicator --indicator-thickness 20 --indicator-radius 100 --ring-color 000000 --bs-hl-color 777777 --key-hl-color 777777 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2 # black style
+
+general { 
+    gaps_in = 0
+    gaps_out = 0
+
+    border_size = 0
+
+    resize_on_border = false 
+
+    allow_tearing = false
+
+    layout = dwindle
+}
+
+decoration {
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+    drop_shadow = false
+}

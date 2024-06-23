@@ -1,0 +1,30 @@
+$lockscreen = swaylock --clock --screenshots --effect-blur 20x5 --indicator --indicator-thickness 20 --indicator-radius 100 --ring-color 007700 --bs-hl-color aa00aa --key-hl-color 00ff11 --line-color 00000000 --inside-color 00000088 --separator-color 00000000 --fade-in 0.2 # green style
+
+general { 
+    gaps_in = 10
+    gaps_out = 20
+
+    border_size = 2
+
+    col.active_border = rgba(00ff11ee) rgba(007700ee) 45deg # green theme
+    col.inactive_border = rgba(595959aa)
+
+    resize_on_border = false 
+
+    allow_tearing = false
+
+    layout = dwindle
+}
+
+decoration {
+    rounding = 10
+
+    active_opacity = 1.0
+    inactive_opacity = 1.0
+
+    drop_shadow = true
+    shadow_range = 4
+    shadow_render_power = 3
+    col.shadow = rgba(1a1a1aee)
+}
+
