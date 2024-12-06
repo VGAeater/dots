@@ -1,6 +1,10 @@
 background-color=#19191b
-text-color=#ffffff
-border-size=4
-border-color=#cc1444
-border-radius=8
+text-color=#cc1444
+border-size=0
+font=monospace 12
+padding=6
+margin=12
+icons=1
+#border-color=#cc1444
+border-radius=24
 default-timeout=10000
