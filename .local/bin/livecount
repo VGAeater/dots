@@ -1,0 +1,14 @@
+#!/bin/sh
+
+SLEEP_TIME=1
+if ! [ -z $1 ]; then
+	SLEEP_TIME=$1
+fi
+
+while true;
+do
+	clear
+	echo $(ls | wc -l)
+	echo -n $(du -h -d 0 | cut -f1)
+	sleep $SLEEP_TIME
+done

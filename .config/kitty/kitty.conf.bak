@@ -1,7 +1,7 @@
 # BEGIN_KITTY_THEME
-# Cyberpunk
+# Hachiko
 include current-theme.conf
 # END_KITTY_THEME
 # placement_strategy top-left
 # bell_path none
-background_opacity 0.8
+background_opacity 0.5
