@@ -1,9 +1,14 @@
 #!/bin/sh
 
-if [[ $1 = "-h" ]] || [[ $1 = "--help" ]] || [ -z $1 ]
-then
+if [[ $1 = "-h" ]] || [[ $1 = "--help" ]] || [ -z $1 ]; then
 	echo "Your options are:"
 	ls --color=auto ~/backgrounds
+	exit 0
+fi
+
+if test -d ~/backgrounds/$1; then
+	echo "Your options are:"
+	ls --color=auto ~/backgrounds/$1
 	exit 0
 fi
 
@@ -13,9 +18,4 @@ if ! test -f ~/backgrounds/$1; then
 fi
 
 swww img ~/backgrounds/$1 --filter Nearest --transition-type center
-
-# printf "preload = ~/backgrounds/$1\nwallpaper = ,~/backgrounds/$1" > ~/.config/hypr/hyprpaper.conf
-
-# ps aux | grep hyprpaper | grep -v grep | awk '{print $2}' | xargs kill
-# hyprpaper > /dev/null &
 

@@ -1,0 +1,116 @@
+* {
+	border: none;
+	transition: ease-in-out;
+	transition-duration: 0.2s;
+	font-family: Roboto, "Symbols Nerd Font";
+	font-size: 24px;
+}
+
+window#waybar {
+	background: transparent;
+}
+
+window#waybar.hidden {
+	opacity: 0.2;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+	background-color: #19191b;
+	margin: 12px;
+	margin-bottom: 0px;
+	border-radius: 24px;
+}
+
+.modules-left,
+.modules-right {
+	padding-left: 8px;
+	padding-right: 8px;
+}
+
+#workspaces button, #taskbar button {
+	padding-left: 16px;
+	padding-right: 16px;
+	border-radius: 24px;
+	background: transparent;
+	color: #cc1444;
+}
+
+#workspaces button.active, #taskbar button:active {
+	background-color: #121213;
+}
+
+#workspaces button:hover, #taskbar button:hover {
+	color: #E8A2AF;
+	box-shadow: none;
+	text-shadow: none;
+}
+/*
+#clock {
+	margin-bottom: 8px;
+}
+
+#pulseaudio {
+	font-size: 20px;
+}
+*/
+#pulseaudio-slider {
+	all: unset;
+}
+
+#battery.charging, #battery.plugged {}
+
+#battery.critical:not(.charging) {
+	animation-duration: 0.5s;
+	animation-name: blink;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes blink {
+	to {
+		background-color: #BF616A;
+		color: #B5E8E0;
+	}
+}
+
+#idle_inhibitor,
+#network,
+#power-profiles-daemon,
+#custom-updates,
+#tray,
+
+#clock,
+#backlight,
+#battery,
+#pulseaudio-slider {
+	padding: 8px;
+	border-radius: 12px;
+	color: #cc1444;
+}
+
+#pulseaudio-slider {
+	padding: 12px;
+}
+
+#pulseaudio-slider slider {
+	opacity: 0;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+	min-width: 120px;
+	min-height: 12px;
+	border-radius: 6px;
+	background-color: #121213;
+}
+
+#pulseaudio-slider highlight {
+	border-radius: 6px;
+	background-color: #cc1444;
+}
+

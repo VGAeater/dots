@@ -4,7 +4,7 @@ import subprocess, random, time, os
 
 
 def auto_type(text, delay=2, speed=150, speed_deviation=0.4, block_size=20, block_size_deviation=0.5, pause_chance=0.2, pause_length=2, pause_length_deviation=2):
-    text = text.replace("’", "'").replace('“', '"').replace('”', '"');
+    text = text.replace("’", "'").replace('“', '"').replace('”', '"').replace('–', '-').replace('÷', '/').replace('-', '-');
     for i in range(delay, 0, -1):
         print(i)
         time.sleep(1)
