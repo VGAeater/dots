@@ -1,0 +1,164 @@
+{
+	"layer": "bottom",
+	"modules-left": ["idle_inhibitor","clock","network","cpu","memory","temperature","power-profiles-daemon","custom/updates","tray"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": ["mpd","pulseaudio","backlight","battery","custom/weather"],
+	
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
+	},
+	"pulseaudio": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon} {volume}%",
+		"format-muted": " ",
+		"format-icons": {
+			"headphone": " ",
+			"hands-free": " ",
+			"headset": " ",
+			"phone": " ",
+			"portable": " ",
+			"car": " ",
+			"default": [""," "," "]
+		},
+		"scroll-step": 5,
+		"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false
+	},
+	"temperature": {
+		// "thermal-zone": 2,
+		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+		// "critical-threshold": 80,
+		// "format-critical": "{temperatureC}°C ",
+		"format": "{temperatureC}°C "
+	},
+	"mpd": {
+		"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+		"format-disconnected": "Disconnected ",
+		"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+		"interval": 2,
+		"consume-icons": {
+			"on": " " // Icon shows only when "consume" is on
+		},
+		"random-icons": {
+			"off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+			"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+		"state-icons": {
+			"paused": "",
+			"playing": ""
+		},
+		"tooltip-format": "MPD (connected)",
+		"tooltip-format-disconnected": "MPD (disconnected)",
+		"on-click": "kitty -e ncmpcpp"
+	},
+	"network": {
+		"tooltip": false,
+		"format-wifi": "  {essid}",
+		"format-ethernet": " "
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": "{icon} {percent}%",
+		"interval":1,
+		"format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "brightnessctl set 5%+",
+		"on-scroll-down": "brightnessctl set 5%-"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 20
+		},
+		"format": "{icon}  {capacity}%",
+		"format-charging": " {capacity}%",
+		"format-plugged": " {capacity}%",
+		"format-alt": "{time} {icon}",
+		"format-icons": ["", "", "", "", ""]
+	},
+	"tray":{
+		"icon-size":18,
+		"spacing": 10
+	},
+	"clock": {
+		//"format": "{:%H:%M}",
+		//"format-alt": "{:%d/%m/%Y}",
+		//"tooltip": false
+		"format": " {:%H:%M:%S 󰸘 %F}",
+		"interval": 1,
+		"format-alt": "{:%A, %B %d, %Y (%R) %Z} 󰸘 ",
+		//"tooltip-format": "<span size='12pt' font='Sarasa Mono SC'>{calendar}</span>",
+		"tooltip-format": "<small><tt>{calendar}</tt></small>",
+		//"tooltip-format": "{tz_list}<small><tt>{calendar}</tt></small>\n{:%Ec}",
+		"timezones" : ["America/New_York"],
+		"calendar": {
+			"mode"          : "year",
+		    	"mode-mon-col"  : 3,
+			"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{:%U}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	"cpu": {
+		"interval": 15,
+		"format": " {}%",
+		"max-length": 10
+	},
+	"memory": {
+		"interval": 30,
+		"format": " {}%",
+		"max-length": 10
+	},
+	"custom/updates":{
+		"format": "{}",
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/checkupdates",
+		"exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+		"tooltip": true,
+		"interval": 15,
+		"on-click": "kitty -e yay && notify-send 'The system has been updated'"
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"tooltip-format-activated": "Idle Inhibitor is active",
+		"tooltip-format-deactivated": "Idle Inhibitor is not active",
+		"format-icons": {
+			"activated": "",
+			"deactivated": ""
+		}
+	},
+	"custom/weather": {
+		"format": "{}",
+		"return-type": "json",
+		"exec": "wttrbar",
+		"tooltip": true,
+		"interval": 3600
+	}
+}
