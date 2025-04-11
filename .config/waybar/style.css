@@ -2,7 +2,7 @@
 	border: none;
 	transition: ease-in-out;
 	transition-duration: 0.2s;
-	font-family: Roboto, "Symbols Nerd Font";
+	font-family: "JetBrainsMono NF";
 	font-size: 24px;
 }
 
@@ -46,18 +46,10 @@ window#waybar.hidden {
 	box-shadow: none;
 	text-shadow: none;
 }
-/*
-#clock {
-	margin-bottom: 8px;
-}
 
-#pulseaudio {
+/*#pulseaudio {
 	font-size: 20px;
-}
-*/
-#pulseaudio-slider {
-	all: unset;
-}
+}*/
 
 #battery.charging, #battery.plugged {}
 
@@ -77,40 +69,18 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor,
-#network,
-#power-profiles-daemon,
-#custom-updates,
+#custom-mpris,
 #tray,
 
 #clock,
+#network,
 #backlight,
 #battery,
-#pulseaudio-slider {
+#power-profiles-daemon,
+#wireplumber,
+#custom-updates {
 	padding: 8px;
 	border-radius: 12px;
 	color: #cc1444;
-}
-
-#pulseaudio-slider {
-	padding: 12px;
-}
-
-#pulseaudio-slider slider {
-	opacity: 0;
-	background-image: none;
-	border: none;
-	box-shadow: none;
-}
-
-#pulseaudio-slider trough {
-	min-width: 120px;
-	min-height: 12px;
-	border-radius: 6px;
-	background-color: #121213;
-}
-
-#pulseaudio-slider highlight {
-	border-radius: 6px;
-	background-color: #cc1444;
 }
 

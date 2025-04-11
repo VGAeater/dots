@@ -12,4 +12,4 @@ if ! test -f ~/.config/hypr/displayPresets/$1; then
   exit 2
 fi
 
-cp ~/.config/hypr/displayPresets/$1 ~/.config/hypr/display.conf
+cp ~/.config/hypr/displayPresets/$1 ~/.config/hypr/displays.conf
