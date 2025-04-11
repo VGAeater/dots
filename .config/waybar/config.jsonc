@@ -1,11 +1,10 @@
 {
 	"layer": "top",
 	"position": "top",
-	"modules-left": ["idle_inhibitor","network","power-profiles-daemon","custom/updates","tray"],
+	"modules-left": ["idle_inhibitor","custom/mpris","tray"],
 	"modules-center": ["hyprland/workspaces"/*,"wlr/taskbar"*/],
-	"modules-right": ["pulseaudio/slider","backlight","battery","clock"],
-
-	"wlr/taskbar": {
+	"modules-right": ["custom/updates","wireplumber","backlight","power-profiles-daemon","battery","network","clock"],
+	/*"wlr/taskbar": {
 		"format": "{icon}",
 		"icon-size": 24,
 		"tooltip-format": "{title}",
@@ -14,6 +13,12 @@
 		//"ignore-list": [
 			//"kitty"
 		//]
+	},*/
+	"custom/mpris": {
+		"exec": "python3 -u ~/.config/waybar/mpris.py",
+		"format": "{}",
+		"return-type": "json",
+		"on-click": "playerctl play-pause"
 	},
 	"hyprland/workspaces": {
 		"format": "{name}",
@@ -31,10 +36,14 @@
 			"power-saver": "󰌪"
 		}
 	},
-	"pulseaudio/slider": {
-		"min": 0,
-		"max": 100,
-		"orientation": "horizontal"
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰖁",
+		"tooltip-format": "{volume}%",
+		"tooltip": true,
+		"on-click": "qpwgraph",
+		//"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"format-icons": ["󰕿", "󰖀", "󰕾"]
 	},
 	//"pulseaudio": {
 	//	"format": "{icon}",
@@ -81,7 +90,7 @@
 		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
 	},
 	"tray":{
-		"icon-size": 24,
+		"icon-size": 32,
 		"spacing": 10
 	},
 	"clock": {
