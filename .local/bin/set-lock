@@ -1,0 +1,35 @@
+#!/bin/sh
+
+base_dir=~/.config/swaylock/themes/
+
+if [[ $1 = "-h" ]] || [[ $1 = "--help" ]]; then
+	echo "Your options are:"
+	ls --color=auto $base_dir
+	exit 0
+fi
+
+unset file
+
+while true; do
+	echo "Your options are:"
+	if ! [ -z $file ] && test -d $base_dir$file; then
+		ls --color=auto $base_dir$file
+	else
+		ls --color=auto $base_dir
+	fi
+	read -p "Type the file name: " file
+
+	if test -d $base_dir$file; then
+		continue
+	fi
+
+	if ! test -f $base_dir$file; then
+		echo "No such file or directory." $base_dir$file
+		continue
+	fi
+
+	echo "Chose: " $base_dir$file
+	break
+done
+
+cp $base_dir$file ~/.config/swaylock/config

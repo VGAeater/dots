@@ -1,21 +1,37 @@
 #!/bin/sh
 
-if [[ $1 = "-h" ]] || [[ $1 = "--help" ]] || [ -z $1 ]; then
+base_dir=~/backgrounds/
+
+if [[ $1 = "-h" ]] || [[ $1 = "--help" ]]; then
 	echo "Your options are:"
-	ls --color=auto ~/backgrounds
+	ls --color=auto $base_dir
 	exit 0
 fi
 
-if test -d ~/backgrounds/$1; then
+unset file
+echo "Setting background image..."
+
+while true; do
 	echo "Your options are:"
-	ls --color=auto ~/backgrounds/$1
-	exit 0
-fi
+	if ! [ -z $file ] && test -d $base_dir$file; then
+		ls --color=auto $base_dir$file
+	else
+		ls --color=auto $base_dir
+	fi
+	read -p "Type the file name: " file
 
-if ! test -f ~/backgrounds/$1; then
-  echo "No such file or directory." ~/backgrounds/$1
-  exit 2
-fi
+	if test -d $base_dir$file; then
+		continue
+	fi
 
-swww img ~/backgrounds/$1 --filter Nearest --transition-type center
+	if ! test -f $base_dir$file; then
+		echo "No such file or directory." $base_dir$file
+		continue
+	fi
+
+	echo "Chose: " $base_dir$file
+	break
+done
+
+swww img $base_dir$file --filter Nearest --transition-type center
 

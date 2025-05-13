@@ -4,8 +4,7 @@
     "useQuickCss": true,
     "themeLinks": [],
     "enabledThemes": [
-        "BasicBackground.theme.css",
-        "Fallout4Terminal.theme.css"
+        "BasicBackground.theme.css"
     ],
     "enableReactDevtools": false,
     "frameless": false,
@@ -660,7 +659,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1744647110082
+        "settingsSyncVersion": 1746985265962
     },
     "eagerPatches": false
 }

@@ -1,0 +1,142 @@
+{
+	"layer": "top",
+	"position": "top",
+	"modules-left": ["idle_inhibitor","custom/mpris","tray"],
+	"modules-center": ["hyprland/workspaces"/*,"wlr/taskbar"*/],
+	"modules-right": ["custom/updates","wireplumber","backlight","power-profiles-daemon","battery","network","clock"],
+	/*"wlr/taskbar": {
+		"format": "{icon}",
+		"icon-size": 24,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		//"ignore-list": [
+			//"kitty"
+		//]
+	},*/
+	"custom/mpris": {
+		"exec": "python3 -u ~/.config/waybar/mpris.py",
+		"format": "{}",
+		"return-type": "json",
+		"on-click": "playerctl play-pause"
+	},
+	"hyprland/workspaces": {
+		"format": "{name}",
+		"on-click": "activate",
+		"sort-by-number": true
+	},
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  		"tooltip": true,
+		"format-icons": {
+			"default": "󱐋",
+			"performance": "󱐋",
+			"balanced": "󰗑",
+			"power-saver": "󰌪"
+		}
+	},
+	"wireplumber": {
+		"format": "{icon}",
+		"format-muted": "󰖁",
+		"tooltip-format": "{volume}%",
+		"tooltip": true,
+		"on-click": "qpwgraph",
+		//"on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+		"format-icons": ["󰕿", "󰖀", "󰕾"]
+	},
+	//"pulseaudio": {
+	//	"format": "{icon}",
+	//	"format-bluetooth": "󰂯",
+	//	"format-muted": "󰝟",
+	//	"format-icons": {
+	//		"headphone": "󰋋",
+	//		"default": ["󰕿","󰖀","󰕾"]
+	//	},
+	//	"scroll-step": 5,
+	//	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+	//	"tooltip": false
+	//},
+	"network": {
+		"tooltip": true,
+		"tooltip-format-wifi": "{essid}\n{ipaddr}\n{signaldBm} dBm → {signalStrength}%",
+		"tooltip-format-ethernet": "{ipaddr}",
+		"tooltip-format-disconnected": "No Connections",
+		"on-click": "kitty -e nmtui-connect",
+		"format": "{icon}",
+		"format-disconnected": "󰌙",
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"format-ethernet": "󰈀",
+		"format-linked": "󰌷"
+	},
+	"backlight": {
+		"tooltip": false,
+		"format": "{icon}",
+		"interval":1,
+		"format-icons": ["󰛩", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"],
+        	"on-scroll-up": "brightnessctl set 5%+",
+		"on-scroll-down": "brightnessctl set 5%-"
+	},
+	"battery": {
+		"states": {
+			"good": 95,
+			"warning": 30,
+			"critical": 20
+		},
+		"format": "{icon}",
+		"tooltip-format": "{capacity}%\n{time}",
+		"format-charging": "󰚥",
+		"format-plugged": "󰚥",
+		"format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+	},
+	"tray":{
+		"icon-size": 32,
+		"spacing": 10
+	},
+	"clock": {
+		//"tooltip": false
+		"format": "{:%H:%M}",
+		"interval": 30,
+		//"tooltip-format": "<small><tt>{calendar}</tt></small>",
+		"tooltip-format": "{tz_list}<small><tt>{calendar}</tt>\n<b><i>{:%Ec}</i></b></small>",
+		"timezones" : ["America/New_York"],
+		"calendar": {
+			"mode"          : "month",
+		    	"mode-mon-col"  : 1,
+			"weeks-pos"     : "right",
+			"on-scroll"     : 1,
+			"format": {
+				"months":     "<span color='#ffead3'><b>{}</b></span>",
+				"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks":      "<span color='#99ffdd'><b>W{:%U}</b></span>",
+				"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+				"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			//"on-click-right": "mode",
+			"on-click-forward": "tz_up",
+			"on-click-backward": "tz_down",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+	"custom/updates":{
+		"format": "{}",
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/checkupdates",
+		"exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
+		"tooltip": true,
+		"interval": 120,
+		"on-click": "kitty -e yay && notify-send 'The system has been updated'"
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"tooltip-format-activated": "Idle Inhibitor is active",
+		"tooltip-format-deactivated": "Idle Inhibitor is not active",
+		"format-icons": {
+			"activated": "󰿆",
+			"deactivated": "󰌾"
+		}
+	}
+}
