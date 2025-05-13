@@ -1,0 +1,17 @@
+clock
+
+screenshots
+effect-blur=20x5
+
+indicator
+indicator-thickness=20
+indicator-radius=100
+
+ring-color=000077
+bs-hl-color=aa00aa
+key-hl-color=33ccff
+line-color=00000000
+inside-color=00000088
+separator-color=00000000
+
+fade-in=0.2
