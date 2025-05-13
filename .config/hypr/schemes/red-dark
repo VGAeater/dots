@@ -1,0 +1,6 @@
+env = GTK_THEME,Adwaita:dark
+
+$primary = rgb(cc1444)
+$secondary = rgb(770425)
+$inactive = rgba(595959aa)
+

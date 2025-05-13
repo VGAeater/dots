@@ -1,0 +1,7 @@
+@define-color primary	#cc1444;
+@define-color secondary	#770425;
+@define-color back-prim	#19191b;
+@define-color back-sec	#121213;
+@define-color blink-back	#BF616A;
+@define-color blink-fore	#B5E8E0;
+

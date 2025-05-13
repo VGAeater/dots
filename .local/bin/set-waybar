@@ -1,0 +1,56 @@
+#!/bin/sh
+
+unset file
+base_dir=~/.config/waybar/schemes/
+
+echo "Setting waybar color scheme..."
+
+while true; do
+	echo "Your options are:"
+	if ! [ -z $file ] && test -d $base_dir$file; then
+		ls --color=auto $base_dir$file
+	else
+		ls --color=auto $base_dir
+	fi
+	read -p "Type the file name: " file
+
+	if test -d $base_dir$file; then
+		continue
+	fi
+
+	if ! test -f $base_dir$file; then
+		echo "No such file or directory." $base_dir$file
+		continue
+	fi
+
+	echo "Chose: " $base_dir$file
+	break
+done
+
+cp $base_dir$file ~/.config/waybar/scheme.css
+
+unset file
+base_dir=~/.config/waybar/themes/
+
+echo "Setting waybar theme..."
+
+while true; do
+	echo "Your options are:"
+	ls --color=auto $base_dir
+
+	read -p "Type the theme name: " file
+
+	if [ ! -f $base_dir$file/config.jsonc ] || [ ! -f $base_dir$file/style.css ]; then
+		echo "No such file or directory." $base_dir$file
+		continue
+	fi
+
+	echo "Chose: " $base_dir$file
+	break
+done
+
+cp $base_dir$file/* ~/.config/waybar/
+
+echo "Restarting waybar..."
+pkill -SIGUSR2 waybar
+

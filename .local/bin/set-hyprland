@@ -1,0 +1,43 @@
+#!/bin/sh
+
+function get_file {
+	while true; do
+		echo "Your options are:"
+		if ! [ -z $file ] && test -d $base_dir$file; then
+			ls --color=auto $base_dir$file
+		else
+			ls --color=auto $base_dir
+		fi
+		read -p "Type the file name: " file
+
+		if test -d $base_dir$file; then
+			continue
+		fi
+
+		if ! test -f $base_dir$file; then
+			echo "No such file or directory." $base_dir$file
+			continue
+		fi
+
+		echo "Chose: " $base_dir$file
+		break
+	done
+}
+
+
+unset file
+base_dir=~/.config/hypr/schemes/
+
+echo "Setting hyprland color scheme..."
+get_file
+
+cp $base_dir$file ~/.config/hypr/scheme.conf
+
+unset file
+base_dir=~/.config/hypr/themes/
+
+echo "Setting hyprland theme..."
+get_file
+
+cp $base_dir$file ~/.config/hypr/theme.conf
+
