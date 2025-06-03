@@ -128,7 +128,7 @@
 		"exec-if": "[[ $(checkupdates | wc -l) != 0 ]]",
 		"tooltip": true,
 		"interval": 120,
-		"on-click": "kitty -e yay && notify-send 'The system has been updated'"
+		"on-click": "kitty -e paru && notify-send 'The system has been updated'"
 	},
 	"idle_inhibitor": {
 		"format": "{icon}",
