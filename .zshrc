@@ -69,7 +69,7 @@ fi
 
 alias H="Hyprland && logout"
 alias f="pfetch"
-alias fetch="fastfetch --logo-width 33 --logo ~/boykisser.png --logo-type kitty-direct"
+alias fetch="fastfetch --logo-width 33 --logo ~/fetch.png --logo-type kitty-direct"
 alias r="cd ~ && clear"
 alias :q="exit && logout"
 #alias comprun="./build && ./run"
