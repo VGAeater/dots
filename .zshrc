@@ -13,6 +13,8 @@ compinit
 HISTFILE=~/.histfile
 HISTSIZE=1000000
 SAVEHIST=1000000
+setopt EXTENDED_HISTORY
+setopt APPEND_HISTORY
 bindkey -v
 setopt no_nomatch
 # End of lines configured by zsh-newuser-install

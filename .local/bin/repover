@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
