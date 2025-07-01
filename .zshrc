@@ -76,6 +76,7 @@ alias r="cd ~ && clear"
 alias :q="exit && logout"
 #alias comprun="./build && ./run"
 alias kms="echo -e \"\033[31m        ♥   <(^.^)>  ♥ \nStop coding you fucking idiot\033[0m\""
+alias s="kitten ssh"
 
 # Alias's for archives
 alias mktar='tar -cvf'
